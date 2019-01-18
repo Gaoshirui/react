@@ -87,6 +87,10 @@ module.exports = function(proxy, allowedHost) {
         // This registers user provided middleware for proxy reasons
         require(paths.proxySetup)(app);
       }
+      app.get('/List',(req,res)=>{
+        const result = require('./data/data.json')
+        res.send(result)
+    })
 
       // This lets us fetch source contents from webpack for the error overlay
       app.use(evalSourceMapMiddleware(server));
